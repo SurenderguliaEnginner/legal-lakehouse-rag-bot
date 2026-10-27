@@ -1,0 +1,17 @@
+services:
+  legal_pgvector_db:
+    image: pgvector/pgvector:pg16
+    container_name: legal_pgvector_db
+    restart: always
+    environment:
+      POSTGRES_DB: legal_rag_db
+      POSTGRES_USER: de_user
+      POSTGRES_PASSWORD: de_password
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgvector_data:/var/lib/postgresql/data
+
+volumes:
+  pgvector_data:
